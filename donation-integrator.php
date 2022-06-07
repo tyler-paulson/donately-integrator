@@ -16,6 +16,9 @@ define('DI_DB_VERSION', '1'); // Incorporate this later: https://wordpress.stack
 
 define('DI_TRANSIENT_EXPIRATION', '1800');
 
+defined('DI_CATEGORY_SEPERATOR') or define('DI_CATEGORY_SEPERATOR', ' - ');
+defined('DI_DONATELY_FEATURED') or define('DI_DONATELY_FEATURED', '');
+
 defined('DONATELY_API_BASE') or define('DONATELY_API_BASE', 'https://api.donately.com/v2/');
 defined('DONATELY_API_VERSION') or define('DONATELY_API_VERSION', '2018-04-01');
 
@@ -24,5 +27,6 @@ require_once 'inc/api.php';
 require_once 'inc/helper.php';
 require_once 'inc/options-page.php';
 require_once 'inc/shortcodes.php';
+require_once 'inc/sorting.php';
 
 register_deactivation_hook( __FILE__, 'di_delete_all_transients');

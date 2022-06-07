@@ -34,6 +34,8 @@ function get_donately_campaigns() {
     }
     
 
-    el($campaigns);
+    //el($campaigns);
+
+    return sort_donately($campaigns);
 
 }
