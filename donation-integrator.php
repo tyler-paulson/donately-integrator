@@ -10,11 +10,11 @@ License:     GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 */
 
-defined( 'ABSPATH' ) or die('No script kiddies please!');
+defined('ABSPATH') or die('No script kiddies please!');
 
 define('DI_DB_VERSION', '1'); // Incorporate this later: https://wordpress.stackexchange.com/a/144873/162024
 
-define('DI_TRANSIENT_EXPIRATION', '1800');
+defined('DI_TRANSIENT_EXPIRATION') or define('DI_TRANSIENT_EXPIRATION', '1800');
 
 defined('DI_CATEGORY_SEPERATOR') or define('DI_CATEGORY_SEPERATOR', ' - ');
 defined('DI_DONATELY_FEATURED') or define('DI_DONATELY_FEATURED', '');

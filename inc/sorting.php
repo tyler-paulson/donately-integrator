@@ -1,24 +1,29 @@
 <?php
 
+function explode_title($full_title) {
+
+    $position_of_seperator = stripos($full_title, DI_CATEGORY_SEPERATOR);
+    $seperated_title = substr($full_title, $position_of_seperator + strlen(DI_CATEGORY_SEPERATOR));
+
+    $category = substr($full_title, 0, $position_of_seperator);
+
+    return array(
+        'category' => $category,
+        'title' => $seperated_title
+    );
+
+}
+
 function sort_donately($campaigns) {
 
     usort($campaigns, function($a, $b){
-
-        $a_full_title = $a->title;
-        $a_position_of_seperator = stripos($a_full_title, DI_CATEGORY_SEPERATOR);
-        $a_seperated_title = substr($a_full_title, $a_position_of_seperator + strlen(DI_CATEGORY_SEPERATOR));
-
-        $b_full_title = $b->title;
-        $b_position_of_seperator = stripos($b_full_title, DI_CATEGORY_SEPERATOR);
-        $b_seperated_title = substr($b_full_title, $b_position_of_seperator + strlen(DI_CATEGORY_SEPERATOR));
         
-        return $a_seperated_title <=> $b_seperated_title;
+        $a_exploded = explode_title($a->title);
+        $b_exploded = explode_title($b->title);
+        
+        return $a_exploded['title'] <=> $b_exploded['title'];
 
     });
-
-    foreach($campaigns as $key => $c) {
-        error_log($c->title);
-    }
 
     $featured = null;
 
@@ -35,14 +40,11 @@ function sort_donately($campaigns) {
 
     foreach($campaigns as &$c) {
 
-        $full_title = $c->title;
-        $position_of_seperator = stripos($full_title, DI_CATEGORY_SEPERATOR);
-        $seperated_title = substr($full_title, $position_of_seperator + strlen(DI_CATEGORY_SEPERATOR));
-        
-        $category = substr($c->title, 0, $position_of_seperator);
+        $exploded = explode_title($c->title);
 
-        $c->title = $seperated_title;
-        $c->category = $category;
+        $c->title = $exploded['title'];
+        $c->category = $exploded['category'];
+
     }
 
     return $campaigns;

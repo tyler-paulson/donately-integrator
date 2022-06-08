@@ -32,7 +32,6 @@ function get_donately_campaigns() {
         set_transient($transient, $campaigns, $expiration);
 
     }
-    
 
     //el($campaigns);
 
