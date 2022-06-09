@@ -1,0 +1,8 @@
+.di-categories, .di-list {
+    padding-left: 0; /* Zero out browser default */
+    list-style-type: none;
+}
+
+.di-list {
+    display: flex;
+}
