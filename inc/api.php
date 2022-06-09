@@ -11,6 +11,9 @@ function get_donately($endpoint, $query = array(), $args = array()) {
     $args['headers']['Accept'] = 'application/json';
     $args['headers']['Donately-Version'] = DONATELY_API_VERSION;
     $get = wp_safe_remote_get($url, $args);
+    if(is_wp_error($get)) {
+        // To-do: Throw an error
+    }
     return json_decode($get['body'])->data;
 }
 
