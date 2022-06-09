@@ -1,5 +1,12 @@
 <?php
 
+function pluralize($cat) {
+    if($cat === 'Fundraiser') {
+        return $cat . 's';
+    }
+    return $cat;
+}
+
 function explode_title($full_title) {
 
     $position_of_seperator = stripos($full_title, DI_CATEGORY_SEPERATOR);
@@ -43,7 +50,7 @@ function sort_donately($campaigns) {
         $exploded = explode_title($c->title);
 
         $c->title = $exploded['title'];
-        $c->category = $exploded['category'];
+        $c->category = pluralize($exploded['category']);
 
     }
 
