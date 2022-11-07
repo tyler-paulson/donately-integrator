@@ -10,9 +10,9 @@ function campaign_html($c, $hl, $w) {
         $o .= '<img src="'.$c->images->photo->original.'" width="316" class="di-c_image">';
     } else {
         if(strpos($w, 'dark') !== false) {
-            $o .= '<img src="'.DI_PLUGIN_URL.'/images/placeholder-dark.svg" width="316" class="di-c_image">';
+            $o .= '<img src="'.DI_PLUGIN_URL.'images/placeholder-dark.svg" width="316" class="di-c_image">';
         } else {
-            $o .= '<img src="'.DI_PLUGIN_URL.'/images/placeholder.svg" width="316" class="di-c_image">';
+            $o .= '<img src="'.DI_PLUGIN_URL.'images/placeholder.svg" width="316" class="di-c_image">';
         }
     }
     $o .= '<h'.($hl+2).' class="di-c_category">'.$c->category.'</h'.($hl+2).'>';
