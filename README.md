@@ -13,12 +13,13 @@ Features will be added to support that organization's specific needs but I'm try
 1. Install this plugin by cloning or copying this repository to your wp-contents/plugins folder
 2. Configure the required constants as explained below
 3. Activate the plugin through the WordPress admin interface
+4. Insert the content on the page using the shortcode [donately]
 
 ## Configuring
 
 ### Constants
 
-Define these in PHP – perhaps in your theme's [functions.php](https://developer.wordpress.org/themes/basics/theme-functions/#what-is-functions-php)
+Define these in PHP – perhaps in your theme's [functions.php](https://developer.wordpress.org/themes/basics/theme-functions/#what-is-functions-php) (good) or [wp-config.php](https://wordpress.org/documentation/article/editing-wp-config-php/) (better).
 
 #### DONATELY_ID
 
