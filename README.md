@@ -36,10 +36,6 @@ Your Donately API token
 
 *Optional*
 
-#### DI_TRANSIENT_EXPIRATION
-
-*Optional*
-
 How long API results from Donately are cached in WordPress (in seconds), default value is 1800 (30 minutes)
 
 #### DI_CATEGORY_SEPERATOR
