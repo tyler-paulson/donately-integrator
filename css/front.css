@@ -9,7 +9,8 @@
 
 .di-categories {
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    column-gap: 1.5rem;
 }
 
 .di-cat_filter {
