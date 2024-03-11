@@ -45,11 +45,19 @@ How long API results from Donately are cached in WordPress (in seconds), default
 
 Since Donately doesn't have native support for categories, this plugin relies on prepending the name of your campaigns with their category. The default value for this constant is " - ". If you use this defaault value, you'd, for example, name your campaign "Projects - Medical Clinic".
 
-#### DI_DONATELY_FEATURED
+### Shortcode Attributes
 
-*Optional*
+##### featured
 
-If you want a campaign to always appear first, define this constant with its id.
+Add a campaign ID (cmp_abcd) here to put it in the first slot always.
+
+##### skip
+
+Add a campaign ID (cmp_abcd) here to skip it.
+
+##### title
+
+Change the header above the grid to somthing other than "Campaigns".
 
 ## Legal
 

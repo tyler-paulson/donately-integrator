@@ -17,7 +17,7 @@ function get_donately($endpoint, $query = array(), $args = array()) {
     return json_decode($get['body'])->data;
 }
 
-function get_donately_campaigns() {
+function get_donately_campaigns($featured = '', $skip = '') {
 
     $transient = 'di_get_donately_campaigns';
     $expiration = intval(DI_TRANSIENT_EXPIRATION);
@@ -38,6 +38,6 @@ function get_donately_campaigns() {
 
     //el($campaigns);
 
-    return sort_donately($campaigns);
+    return sort_donately($campaigns, $featured, $skip);
 
 }

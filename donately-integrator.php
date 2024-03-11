@@ -3,7 +3,7 @@
 /*
 Plugin Name: Donately Integrator
 Description: Integrates Donately campaigns into a page 
-Version:     0.0.1
+Version:     0.0.2
 Author:      Tyler Paulson
 Author URI:  https://work.tylerpaulson.com
 License:     GPLv3

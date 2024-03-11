@@ -4,8 +4,8 @@ function campaign_html($c, $hl, $w) {
     $o = '';
     $o .= '<li class="di-c">';
     $o .= '<a href="'.$c->url.'/donate">';
+    $o .= '<header>';
     $o .= '<h'.($hl+1).' class="di-c_title">'.$c->title.'</h'.($hl+1).'>';
-    $o .= '<div>';
     if(!empty($c->images->photo->original)) {
         $o .= '<img src="'.$c->images->photo->original.'" width="316" class="di-c_image">';
     } else {
@@ -15,8 +15,10 @@ function campaign_html($c, $hl, $w) {
             $o .= '<img src="'.DI_PLUGIN_URL.'images/placeholder.svg" width="316" class="di-c_image">';
         }
     }
-    $o .= '<h'.($hl+2).' class="di-c_category">'.$c->category.'</h'.($hl+2).'>';
-    $o .= '</div>';
+    $o .= '</header>';
+    if(!empty($c->description)) {
+        $o .= '<p class="di-c_description">'.$c->description.'</p>';
+    }
     $o .= '</a>';
     $o .= '</li>';
     return $o;
@@ -36,7 +38,10 @@ function di_donately_shortcode($atts = [], $content = null, $tag = '') {
         array(
             'title' => 'Campaigns',
             'heading' => '3',
-            'wrapper' => ''
+            'wrapper' => '',
+            'featured' => '',
+            'skip' => '',
+            'all' => in_array('all', $atts)
         ), $atts, $tag
     );
 
@@ -69,7 +74,7 @@ function di_donately_shortcode($atts = [], $content = null, $tag = '') {
         $o .= '</div>';
     }
 
-    $campaigns = get_donately_campaigns();
+    $campaigns = get_donately_campaigns($ov_atts['featured'], $ov_atts['skip']);
 
     $categories = array();
 
@@ -86,6 +91,10 @@ function di_donately_shortcode($atts = [], $content = null, $tag = '') {
     }
 
     if(count($categories) > 0) {
+        if($ov_atts['all']) {
+            // Add 'All' at the beginning of $categories array
+            array_unshift($categories, 'All');
+        }
         $o .= '<ul class="di-categories" style="display:none;">';
         foreach($categories as $cat) {
             $o .= '<li><button class="di-cat_filter">'.$cat.'</button></li>';
@@ -101,6 +110,13 @@ function di_donately_shortcode($atts = [], $content = null, $tag = '') {
     $o .= '<div class="di-campaigns">';
 
     if(count($categories) > 0) {
+        if($ov_atts['all']) {
+            $o .= '<ul class="'.$campaign_list_classes.'" data-category="All">';
+            foreach($campaigns as $c) {
+                $o .= campaign_html($c, $hl, $wrapper_class);
+            }
+            $o .= '</ul>';
+        }
         foreach($categories as $cat) {
             $o .= '<ul class="'.$campaign_list_classes.'" data-category="'.$cat.'">';
             foreach($campaigns as $c) {

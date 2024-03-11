@@ -21,7 +21,7 @@ function explode_title($full_title) {
 
 }
 
-function sort_donately($campaigns) {
+function sort_donately($campaigns, $featured = '', $skip = '') {
 
     usort($campaigns, function($a, $b){
         
@@ -32,16 +32,16 @@ function sort_donately($campaigns) {
 
     });
 
-    $featured = null;
-
     foreach($campaigns as $key => $c) {
-        if($c->id === DI_DONATELY_FEATURED) {
+        if($c->id === $featured) {
             $featured = $c;
+            unset($campaigns[$key]);
+        } else if($c->id === $skip) {
             unset($campaigns[$key]);
         }
     }
 
-    if(!is_null($featured)) {
+    if(!empty($featured)) {
         $campaigns = array($featured) + $campaigns;
     }
 
