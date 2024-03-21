@@ -91,6 +91,16 @@
     flex-direction: column;
 }
 
+.di-c_category {
+    text-transform: uppercase;
+    margin: 1rem 0 0 0;
+    color: rgba(0,0,0,.8);
+}
+
+.dark .di-c_category {
+    color: rgba(255,255,255,.8);
+}
+
 .di-c p {
     margin-bottom: 0;
 }

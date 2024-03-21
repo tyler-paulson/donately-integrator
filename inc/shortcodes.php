@@ -1,6 +1,6 @@
 <?php
 
-function campaign_html($c, $hl, $w) {
+function campaign_html($c, $hl, $w, $cat = false) {
     $o = '';
     $o .= '<li class="di-c">';
     $o .= '<a href="'.$c->url.'/donate">';
@@ -14,6 +14,9 @@ function campaign_html($c, $hl, $w) {
         } else {
             $o .= '<img src="'.DI_PLUGIN_URL.'images/placeholder.svg" width="316" class="di-c_image">';
         }
+    }
+    if($cat) {
+        $o .= '<h'.($hl+2).' class="di-c_category">'.$c->category.'</h'.($hl+2).'>';
     }
     $o .= '</header>';
     if(!empty($c->description)) {
@@ -113,7 +116,7 @@ function di_donately_shortcode($atts = [], $content = null, $tag = '') {
         if($ov_atts['all']) {
             $o .= '<ul class="'.$campaign_list_classes.'" data-category="All">';
             foreach($campaigns as $c) {
-                $o .= campaign_html($c, $hl, $wrapper_class);
+                $o .= campaign_html($c, $hl, $wrapper_class, true);
             }
             $o .= '</ul>';
         }
