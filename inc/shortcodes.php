@@ -15,10 +15,10 @@ function campaign_html($c, $hl, $w, $cat = false) {
             $o .= '<img src="'.DI_PLUGIN_URL.'images/placeholder.svg" width="316" class="di-c_image">';
         }
     }
+    $o .= '</header>';
     if($cat) {
         $o .= '<h'.($hl+2).' class="di-c_category">'.$c->category.'</h'.($hl+2).'>';
     }
-    $o .= '</header>';
     if(!empty($c->description)) {
         $o .= '<p class="di-c_description">'.$c->description.'</p>';
     }
