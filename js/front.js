@@ -18,6 +18,23 @@
             });
         });
 
+        if(typeof(window.URL) != "undefined") {
+
+            const url = new URL(window.location.href);
+            const category = url.searchParams.get('category');
+
+            if(category) {
+                $('.di-cat_filter').each(function() {
+                    console.log($(this).text().toLowerCase());
+                    if($(this).text().toLowerCase() === category) {
+                        $(this).trigger('click');
+                        return false;
+                    }
+                });
+            }
+
+        }
+
 	});
 
 })(document, jQuery);

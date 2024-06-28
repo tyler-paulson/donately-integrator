@@ -59,6 +59,12 @@ Add a campaign ID (cmp_abcd) here to skip it.
 
 Change the header above the grid to somthing other than "Campaigns".
 
+### URL Search Parameters (Query Strings)
+
+#### category
+
+Add a category name (case insensitive) and that category will be selected when the page loads instead of the first category.
+
 ## Legal
 
 This plugin is open-sourced software licensed under the GPL-3.0 license. 
