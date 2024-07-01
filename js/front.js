@@ -25,8 +25,7 @@
 
             if(category) {
                 $('.di-cat_filter').each(function() {
-                    console.log($(this).text().toLowerCase());
-                    if($(this).text().toLowerCase() === category) {
+                    if($(this).text().toLowerCase() === category.toLowerCase()) {
                         $(this).trigger('click');
                         return false;
                     }
