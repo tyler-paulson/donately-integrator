@@ -1,9 +1,10 @@
 <?php
 
 function campaign_html($c, $hl, $w, $cat = false) {
+    $url = strpos($c->url, 'account_subdomain=') !== false ? $c->url : $c->url . '/donate';
     $o = '';
     $o .= '<li class="di-c">';
-    $o .= '<a href="'.$c->url.'/donate">';
+    $o .= '<a href="'.$url.'">';
     $o .= '<header>';
     $o .= '<h'.($hl+1).' class="di-c_title">'.$c->title.'</h'.($hl+1).'>';
     if(!empty($c->images->photo->original)) {
